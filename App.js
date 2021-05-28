@@ -8,7 +8,8 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
   ImageBackground,
-  Alert
+  Alert,
+  Image
 } from 'react-native';
 
 const chwidth = Dimensions.get('window').width
@@ -22,6 +23,11 @@ import client from './client'
 import { Switch } from 'react-native-switch';
 
 import messaging from '@react-native-firebase/messaging';
+
+import AutoHeightImage from 'react-native-auto-height-image';
+
+const alarmbtn = require('./img/alambtn.png')
+const redKo = require('./img/redKo.png')
 
 
 const Stack = createStackNavigator();
@@ -87,20 +93,24 @@ const MainSwitch = () => {
       console.log('전송!')
     } catch (error) {
       console.log(error)
-      client.destroy()
+      Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
+      // client.destroy()
 
-      setTimeout(() => {
+      // setTimeout(() => {
 
-        client.connect({ port: 3600, host: '116.122.157.170' })
-        client.write('$C,O,0,0')
-        console.log('전송!')
+      //   client.connect({ port: 3600, host: '116.122.157.170' })
+      //   client.write('$C,O,0,0')
+      //   console.log('전송!')
 
-      }, 1000);
+      // }, 1000);
     }
   }
 
   const focusis = navigation.addListener('focus', () => {
-    reqState()
+    // reqState()
+    // setInterval(() => {
+    //   reqState()
+    // }, 5000);
   })
   useEffect(() => {
     return () => {
@@ -151,6 +161,8 @@ const MainSwitch = () => {
   const [solt19, setsolt19] = useState(false)
   const [solt20, setsolt20] = useState(false)
 
+  const [mainAlarm, setMainAlarm] = useState(true)
+
 
   return (
     <SafeAreaView style={{ backgroundColor: 'white' }}>
@@ -158,7 +170,7 @@ const MainSwitch = () => {
         <ImageBackground source={oceanImg} style={{ width: '100%', height: '100%' }}>
 
           {/*  */}
-          <View style={{ height: '15%', marginTop: 20, marginLeft: 15, width: chwidth - 25, flexDirection: 'row', justifyContent: 'space-between' }}>
+          <View style={{ marginTop: 20, marginLeft: 15, marginBottom: 20, width: chwidth - 25, flexDirection: 'row', justifyContent: 'space-between' }}>
             <View>
               <View style={{ width: 15, height: 5, backgroundColor: 'red', marginBottom: 5 }}></View>
               <TouchableWithoutFeedback onPress={() => { reqState() }}>
@@ -200,6 +212,27 @@ const MainSwitch = () => {
               />
             </View>
           </View>
+          {/*  */}
+
+
+          {/* 상태알람  */}
+          {
+            mainAlarm &&
+
+            <View style={{ marginLeft: 10, width: chwidth - 20, backgroundColor: 'white', borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 15 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <AutoHeightImage source={alarmbtn} width={40} style={{ margin: 10 }}></AutoHeightImage>
+                <Text style={{ fontWeight: 'bold' }}>상태 알람</Text>
+                <AutoHeightImage source={redKo} width={40}></AutoHeightImage>
+              </View>
+              <TouchableWithoutFeedback onPress={() => console.log('확인')}>
+                <View style={{ width: 70, borderRadius: 8, backgroundColor: 'rgb(221,221,221)', alignItems: 'center', justifyContent: 'center', marginRight: 10 }}>
+                  <Text style={{ margin: 7 }}>확인</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
+
+          }
           {/*  */}
 
           <ScrollView style={{ marginLeft: 10 }} showsVerticalScrollIndicator={false}>
