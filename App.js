@@ -21,9 +21,20 @@ import client from './client'
 
 import { Switch } from 'react-native-switch';
 
+import messaging from '@react-native-firebase/messaging';
+
 
 const Stack = createStackNavigator();
 const App = () => {
+
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode={"none"}>

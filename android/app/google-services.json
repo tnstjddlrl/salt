@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "3204254118",
+    "project_id": "salt-b7139",
+    "storage_bucket": "salt-b7139.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3204254118:android:9762493f9f143e35c6a767",
+        "android_client_info": {
+          "package_name": "com.salt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3204254118-01e4qqn1i8g87c13cenvnhj5kolov9nt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmxLbbk3FiwYqsKiqYTO4fx7jegio5kgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3204254118-01e4qqn1i8g87c13cenvnhj5kolov9nt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
