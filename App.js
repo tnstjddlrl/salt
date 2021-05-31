@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,7 +9,8 @@ import {
   TouchableWithoutFeedback,
   ImageBackground,
   Alert,
-  Image
+  Image,
+  Animated
 } from 'react-native';
 
 const chwidth = Dimensions.get('window').width
@@ -130,8 +131,10 @@ const MainSwitch = () => {
       } else if (ccmd[0] + ccmd[1] + ccmd[2] == 'saltpoweroff') {
         Alert.alert(ccmd[3] + '번 염판 꺼짐 확인')
       }
-
     })
+
+
+    fadin()
   }, [])
 
   const [switchValue, setSwitchValue] = useState(false)
@@ -162,6 +165,42 @@ const MainSwitch = () => {
   const [solt20, setsolt20] = useState(false)
 
   const [mainAlarm, setMainAlarm] = useState(true)
+
+  /// 애니메이션 속성
+
+  const fadeAnim = useRef(new Animated.Value(0)).current
+
+  function fadin() {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true
+      }
+    ).start();
+
+    setTimeout(() => {
+      fadout()
+    }, 1100);
+  }
+
+  function fadout() {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true
+      }
+    ).start();
+
+    setTimeout(() => {
+      fadin()
+    }, 1100);
+  }
+
+  ///
 
 
   return (
@@ -223,7 +262,9 @@ const MainSwitch = () => {
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <AutoHeightImage source={alarmbtn} width={40} style={{ margin: 10 }}></AutoHeightImage>
                 <Text style={{ fontWeight: 'bold' }}>상태 알람</Text>
-                <AutoHeightImage source={redKo} width={40}></AutoHeightImage>
+                <Animated.View style={{ opacity: fadeAnim }}>
+                  <AutoHeightImage source={redKo} width={40}></AutoHeightImage>
+                </Animated.View>
               </View>
               <TouchableWithoutFeedback onPress={() => console.log('확인')}>
                 <View style={{ width: 70, borderRadius: 8, backgroundColor: 'rgb(221,221,221)', alignItems: 'center', justifyContent: 'center', marginRight: 10 }}>
