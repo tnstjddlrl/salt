@@ -271,6 +271,385 @@ const MainSwitch = () => {
           setsolt2_4(true)
         }
 
+        if (JSON.parse(command)[3].state.split(':')[0] == 1) {
+          setsolt3_1(false)
+        } else if (JSON.parse(command)[3].state.split(':')[0] == 0) {
+          setsolt3_1(true)
+        }
+        if (JSON.parse(command)[3].state.split(':')[1] == 1) {
+          setsolt3_2(false)
+        } else if (JSON.parse(command)[3].state.split(':')[1] == 0) {
+          setsolt3_2(true)
+        }
+        if (JSON.parse(command)[3].state.split(':')[2] == 1) {
+          setsolt3_3(false)
+        } else if (JSON.parse(command)[3].state.split(':')[2] == 0) {
+          setsolt3_3(true)
+        }
+        if (JSON.parse(command)[3].state.split(':')[3] == 1) {
+          setsolt3_4(false)
+        } else if (JSON.parse(command)[3].state.split(':')[3] == 0) {
+          setsolt3_4(true)
+        }
+
+        if (JSON.parse(command)[4].state.split(':')[0] == 1) {
+          setsolt4_1(false)
+        } else if (JSON.parse(command)[4].state.split(':')[0] == 0) {
+          setsolt4_1(true)
+        }
+        if (JSON.parse(command)[4].state.split(':')[1] == 1) {
+          setsolt4_2(false)
+        } else if (JSON.parse(command)[4].state.split(':')[1] == 0) {
+          setsolt4_2(true)
+        }
+        if (JSON.parse(command)[4].state.split(':')[2] == 1) {
+          setsolt4_3(false)
+        } else if (JSON.parse(command)[4].state.split(':')[2] == 0) {
+          setsolt4_3(true)
+        }
+        if (JSON.parse(command)[4].state.split(':')[3] == 1) {
+          setsolt4_4(false)
+        } else if (JSON.parse(command)[4].state.split(':')[3] == 0) {
+          setsolt4_4(true)
+        }
+
+        if (JSON.parse(command)[5].state.split(':')[0] == 1) {
+          setsolt5_1(false)
+        } else if (JSON.parse(command)[5].state.split(':')[0] == 0) {
+          setsolt5_1(true)
+        }
+        if (JSON.parse(command)[5].state.split(':')[1] == 1) {
+          setsolt5_2(false)
+        } else if (JSON.parse(command)[5].state.split(':')[1] == 0) {
+          setsolt5_2(true)
+        }
+        if (JSON.parse(command)[5].state.split(':')[2] == 1) {
+          setsolt5_3(false)
+        } else if (JSON.parse(command)[5].state.split(':')[2] == 0) {
+          setsolt5_3(true)
+        }
+        if (JSON.parse(command)[5].state.split(':')[3] == 1) {
+          setsolt5_4(false)
+        } else if (JSON.parse(command)[5].state.split(':')[3] == 0) {
+          setsolt5_4(true)
+        }
+
+        if (JSON.parse(command)[6].state.split(':')[0] == 1) {
+          setsolt6_1(false)
+        } else if (JSON.parse(command)[6].state.split(':')[0] == 0) {
+          setsolt6_1(true)
+        }
+        if (JSON.parse(command)[6].state.split(':')[1] == 1) {
+          setsolt6_2(false)
+        } else if (JSON.parse(command)[6].state.split(':')[1] == 0) {
+          setsolt6_2(true)
+        }
+        if (JSON.parse(command)[6].state.split(':')[2] == 1) {
+          setsolt6_3(false)
+        } else if (JSON.parse(command)[6].state.split(':')[2] == 0) {
+          setsolt6_3(true)
+        }
+        if (JSON.parse(command)[6].state.split(':')[3] == 1) {
+          setsolt6_4(false)
+        } else if (JSON.parse(command)[6].state.split(':')[3] == 0) {
+          setsolt6_4(true)
+        }
+
+        if (JSON.parse(command)[7].state.split(':')[0] == 1) {
+          setsolt7_1(false)
+        } else if (JSON.parse(command)[7].state.split(':')[0] == 0) {
+          setsolt7_1(true)
+        }
+        if (JSON.parse(command)[7].state.split(':')[1] == 1) {
+          setsolt7_2(false)
+        } else if (JSON.parse(command)[7].state.split(':')[1] == 0) {
+          setsolt7_2(true)
+        }
+        if (JSON.parse(command)[7].state.split(':')[2] == 1) {
+          setsolt7_3(false)
+        } else if (JSON.parse(command)[7].state.split(':')[2] == 0) {
+          setsolt7_3(true)
+        }
+        if (JSON.parse(command)[7].state.split(':')[3] == 1) {
+          setsolt7_4(false)
+        } else if (JSON.parse(command)[7].state.split(':')[3] == 0) {
+          setsolt7_4(true)
+        }
+
+        if (JSON.parse(command)[8].state.split(':')[0] == 1) {
+          setsolt8_1(false)
+        } else if (JSON.parse(command)[8].state.split(':')[0] == 0) {
+          setsolt8_1(true)
+        }
+        if (JSON.parse(command)[8].state.split(':')[1] == 1) {
+          setsolt8_2(false)
+        } else if (JSON.parse(command)[8].state.split(':')[1] == 0) {
+          setsolt8_2(true)
+        }
+        if (JSON.parse(command)[8].state.split(':')[2] == 1) {
+          setsolt8_3(false)
+        } else if (JSON.parse(command)[8].state.split(':')[2] == 0) {
+          setsolt8_3(true)
+        }
+        if (JSON.parse(command)[8].state.split(':')[3] == 1) {
+          setsolt8_4(false)
+        } else if (JSON.parse(command)[8].state.split(':')[3] == 0) {
+          setsolt8_4(true)
+        }
+
+        if (JSON.parse(command)[9].state.split(':')[0] == 1) {
+          setsolt9_1(false)
+        } else if (JSON.parse(command)[9].state.split(':')[0] == 0) {
+          setsolt9_1(true)
+        }
+        if (JSON.parse(command)[9].state.split(':')[1] == 1) {
+          setsolt9_2(false)
+        } else if (JSON.parse(command)[9].state.split(':')[1] == 0) {
+          setsolt9_2(true)
+        }
+        if (JSON.parse(command)[9].state.split(':')[2] == 1) {
+          setsolt9_3(false)
+        } else if (JSON.parse(command)[9].state.split(':')[2] == 0) {
+          setsolt9_3(true)
+        }
+        if (JSON.parse(command)[9].state.split(':')[3] == 1) {
+          setsolt9_4(false)
+        } else if (JSON.parse(command)[9].state.split(':')[3] == 0) {
+          setsolt9_4(true)
+        }
+
+        if (JSON.parse(command)[10].state.split(':')[0] == 1) {
+          setsolt10_1(false)
+        } else if (JSON.parse(command)[10].state.split(':')[0] == 0) {
+          setsolt10_1(true)
+        }
+        if (JSON.parse(command)[10].state.split(':')[1] == 1) {
+          setsolt10_2(false)
+        } else if (JSON.parse(command)[10].state.split(':')[1] == 0) {
+          setsolt10_2(true)
+        }
+        if (JSON.parse(command)[10].state.split(':')[2] == 1) {
+          setsolt10_3(false)
+        } else if (JSON.parse(command)[10].state.split(':')[2] == 0) {
+          setsolt10_3(true)
+        }
+        if (JSON.parse(command)[10].state.split(':')[3] == 1) {
+          setsolt10_4(false)
+        } else if (JSON.parse(command)[10].state.split(':')[3] == 0) {
+          setsolt10_4(true)
+        }
+
+        if (JSON.parse(command)[11].state.split(':')[0] == 1) {
+          setsolt11_1(false)
+        } else if (JSON.parse(command)[11].state.split(':')[0] == 0) {
+          setsolt11_1(true)
+        }
+        if (JSON.parse(command)[11].state.split(':')[1] == 1) {
+          setsolt11_2(false)
+        } else if (JSON.parse(command)[11].state.split(':')[1] == 0) {
+          setsolt11_2(true)
+        }
+        if (JSON.parse(command)[11].state.split(':')[2] == 1) {
+          setsolt11_3(false)
+        } else if (JSON.parse(command)[11].state.split(':')[2] == 0) {
+          setsolt11_3(true)
+        }
+        if (JSON.parse(command)[11].state.split(':')[3] == 1) {
+          setsolt11_4(false)
+        } else if (JSON.parse(command)[11].state.split(':')[3] == 0) {
+          setsolt11_4(true)
+        }
+
+        if (JSON.parse(command)[12].state.split(':')[0] == 1) {
+          setsolt12_1(false)
+        } else if (JSON.parse(command)[12].state.split(':')[0] == 0) {
+          setsolt12_1(true)
+        }
+        if (JSON.parse(command)[12].state.split(':')[1] == 1) {
+          setsolt12_2(false)
+        } else if (JSON.parse(command)[12].state.split(':')[1] == 0) {
+          setsolt12_2(true)
+        }
+        if (JSON.parse(command)[12].state.split(':')[2] == 1) {
+          setsolt12_3(false)
+        } else if (JSON.parse(command)[12].state.split(':')[2] == 0) {
+          setsolt12_3(true)
+        }
+        if (JSON.parse(command)[12].state.split(':')[3] == 1) {
+          setsolt12_4(false)
+        } else if (JSON.parse(command)[12].state.split(':')[3] == 0) {
+          setsolt12_4(true)
+        }
+
+        if (JSON.parse(command)[13].state.split(':')[0] == 1) {
+          setsolt13_1(false)
+        } else if (JSON.parse(command)[13].state.split(':')[0] == 0) {
+          setsolt13_1(true)
+        }
+        if (JSON.parse(command)[13].state.split(':')[1] == 1) {
+          setsolt13_2(false)
+        } else if (JSON.parse(command)[13].state.split(':')[1] == 0) {
+          setsolt13_2(true)
+        }
+        if (JSON.parse(command)[13].state.split(':')[2] == 1) {
+          setsolt13_3(false)
+        } else if (JSON.parse(command)[13].state.split(':')[2] == 0) {
+          setsolt13_3(true)
+        }
+        if (JSON.parse(command)[13].state.split(':')[3] == 1) {
+          setsolt13_4(false)
+        } else if (JSON.parse(command)[13].state.split(':')[3] == 0) {
+          setsolt13_4(true)
+        }
+
+        if (JSON.parse(command)[14].state.split(':')[0] == 1) {
+          setsolt14_1(false)
+        } else if (JSON.parse(command)[14].state.split(':')[0] == 0) {
+          setsolt14_1(true)
+        }
+        if (JSON.parse(command)[14].state.split(':')[1] == 1) {
+          setsolt14_2(false)
+        } else if (JSON.parse(command)[14].state.split(':')[1] == 0) {
+          setsolt14_2(true)
+        }
+        if (JSON.parse(command)[14].state.split(':')[2] == 1) {
+          setsolt14_3(false)
+        } else if (JSON.parse(command)[14].state.split(':')[2] == 0) {
+          setsolt14_3(true)
+        }
+        if (JSON.parse(command)[14].state.split(':')[3] == 1) {
+          setsolt14_4(false)
+        } else if (JSON.parse(command)[14].state.split(':')[3] == 0) {
+          setsolt14_4(true)
+        }
+
+        if (JSON.parse(command)[15].state.split(':')[0] == 1) {
+          setsolt15_1(false)
+        } else if (JSON.parse(command)[15].state.split(':')[0] == 0) {
+          setsolt15_1(true)
+        }
+        if (JSON.parse(command)[15].state.split(':')[1] == 1) {
+          setsolt15_2(false)
+        } else if (JSON.parse(command)[15].state.split(':')[1] == 0) {
+          setsolt15_2(true)
+        }
+        if (JSON.parse(command)[15].state.split(':')[2] == 1) {
+          setsolt15_3(false)
+        } else if (JSON.parse(command)[15].state.split(':')[2] == 0) {
+          setsolt15_3(true)
+        }
+        if (JSON.parse(command)[15].state.split(':')[3] == 1) {
+          setsolt15_4(false)
+        } else if (JSON.parse(command)[15].state.split(':')[3] == 0) {
+          setsolt15_4(true)
+        }
+
+        if (JSON.parse(command)[16].state.split(':')[0] == 1) {
+          setsolt16_1(false)
+        } else if (JSON.parse(command)[16].state.split(':')[0] == 0) {
+          setsolt16_1(true)
+        }
+        if (JSON.parse(command)[16].state.split(':')[1] == 1) {
+          setsolt16_2(false)
+        } else if (JSON.parse(command)[16].state.split(':')[1] == 0) {
+          setsolt16_2(true)
+        }
+        if (JSON.parse(command)[16].state.split(':')[2] == 1) {
+          setsolt16_3(false)
+        } else if (JSON.parse(command)[16].state.split(':')[2] == 0) {
+          setsolt16_3(true)
+        }
+        if (JSON.parse(command)[16].state.split(':')[3] == 1) {
+          setsolt16_4(false)
+        } else if (JSON.parse(command)[16].state.split(':')[3] == 0) {
+          setsolt16_4(true)
+        }
+
+        if (JSON.parse(command)[17].state.split(':')[0] == 1) {
+          setsolt17_1(false)
+        } else if (JSON.parse(command)[17].state.split(':')[0] == 0) {
+          setsolt17_1(true)
+        }
+        if (JSON.parse(command)[17].state.split(':')[1] == 1) {
+          setsolt17_2(false)
+        } else if (JSON.parse(command)[17].state.split(':')[1] == 0) {
+          setsolt17_2(true)
+        }
+        if (JSON.parse(command)[17].state.split(':')[2] == 1) {
+          setsolt17_3(false)
+        } else if (JSON.parse(command)[17].state.split(':')[2] == 0) {
+          setsolt17_3(true)
+        }
+        if (JSON.parse(command)[17].state.split(':')[3] == 1) {
+          setsolt17_4(false)
+        } else if (JSON.parse(command)[17].state.split(':')[3] == 0) {
+          setsolt17_4(true)
+        }
+
+        if (JSON.parse(command)[18].state.split(':')[0] == 1) {
+          setsolt18_1(false)
+        } else if (JSON.parse(command)[18].state.split(':')[0] == 0) {
+          setsolt18_1(true)
+        }
+        if (JSON.parse(command)[18].state.split(':')[1] == 1) {
+          setsolt18_2(false)
+        } else if (JSON.parse(command)[18].state.split(':')[1] == 0) {
+          setsolt18_2(true)
+        }
+        if (JSON.parse(command)[18].state.split(':')[2] == 1) {
+          setsolt18_3(false)
+        } else if (JSON.parse(command)[18].state.split(':')[2] == 0) {
+          setsolt18_3(true)
+        }
+        if (JSON.parse(command)[18].state.split(':')[3] == 1) {
+          setsolt18_4(false)
+        } else if (JSON.parse(command)[18].state.split(':')[3] == 0) {
+          setsolt18_4(true)
+        }
+
+        if (JSON.parse(command)[19].state.split(':')[0] == 1) {
+          setsolt19_1(false)
+        } else if (JSON.parse(command)[19].state.split(':')[0] == 0) {
+          setsolt19_1(true)
+        }
+        if (JSON.parse(command)[19].state.split(':')[1] == 1) {
+          setsolt19_2(false)
+        } else if (JSON.parse(command)[19].state.split(':')[1] == 0) {
+          setsolt19_2(true)
+        }
+        if (JSON.parse(command)[19].state.split(':')[2] == 1) {
+          setsolt19_3(false)
+        } else if (JSON.parse(command)[19].state.split(':')[2] == 0) {
+          setsolt19_3(true)
+        }
+        if (JSON.parse(command)[19].state.split(':')[3] == 1) {
+          setsolt19_4(false)
+        } else if (JSON.parse(command)[19].state.split(':')[3] == 0) {
+          setsolt19_4(true)
+        }
+
+
+        if (JSON.parse(command)[20].state.split(':')[0] == 1) {
+          setsolt20_1(false)
+        } else if (JSON.parse(command)[20].state.split(':')[0] == 0) {
+          setsolt20_1(true)
+        }
+        if (JSON.parse(command)[20].state.split(':')[1] == 1) {
+          setsolt20_2(false)
+        } else if (JSON.parse(command)[20].state.split(':')[1] == 0) {
+          setsolt20_2(true)
+        }
+        if (JSON.parse(command)[20].state.split(':')[2] == 1) {
+          setsolt20_3(false)
+        } else if (JSON.parse(command)[20].state.split(':')[2] == 0) {
+          setsolt20_3(true)
+        }
+        if (JSON.parse(command)[20].state.split(':')[3] == 1) {
+          setsolt20_4(false)
+        } else if (JSON.parse(command)[20].state.split(':')[3] == 0) {
+          setsolt20_4(true)
+        }
+
 
 
 
