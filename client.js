@@ -4,7 +4,7 @@ const client = TcpSocket.createConnection({ port: 3600, host: '116.122.157.170' 
     console.log('연결됨!')
 });
 
-// client.setKeepAlive(true, 0)
+client.setKeepAlive(true, 10000)
 
 
 export default client
