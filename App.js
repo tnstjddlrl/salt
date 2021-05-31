@@ -75,42 +75,10 @@ const MainSwitch = () => {
   });
   //스타일 끝
 
-
-  //
-  const axiTest = async () => {
-
-    await axios.get('/users')
-      .then((res) => {
-        console.log(res)
-      }).catch((err) => {
-        console.log('에러' + err)
-      })
-  }
-  //
-
   function reqState() {
     try {
       client.write('$C,O,0,0')
       console.log('전송!')
-    } catch (error) {
-      console.log(error)
-      Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
-      // client.destroy()
-
-      // setTimeout(() => {
-
-      //   client.connect({ port: 3600, host: '116.122.157.170' })
-      //   client.write('$C,O,0,0')
-      //   console.log('전송!')
-
-      // }, 1000);
-    }
-  }
-
-  function sendpp(pp) {
-    try {
-      client.write(pp)
-      console.log(pp + ' 전송!')
     } catch (error) {
       console.log(error)
       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
@@ -968,7 +936,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt1(true)
                 try {
-                  client.write('$S,O,1,1')
+                  client.write('$S,O,1,0')
                   console.log('염판 1 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1013,7 +981,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt1(false)
                     try {
-                      client.write('$S,O,1,0')
+                      client.write('$S,O,1,1')
                       console.log('염판 1 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1038,7 +1006,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt2(true)
                 try {
-                  client.write('$S,O,2,1')
+                  client.write('$S,O,2,0')
                   console.log('염판 2 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1082,7 +1050,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt2(false)
                     try {
-                      client.write('$S,O,2,0')
+                      client.write('$S,O,2,1')
                       console.log('염판 2 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1106,7 +1074,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt3(true)
                 try {
-                  client.write('$S,O,3,1')
+                  client.write('$S,O,3,0')
                   console.log('염판 3 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1150,7 +1118,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt3(false)
                     try {
-                      client.write('$S,O,3,0')
+                      client.write('$S,O,3,1')
                       console.log('염판 3 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1174,7 +1142,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt4(true)
                 try {
-                  client.write('$S,O,4,1')
+                  client.write('$S,O,4,0')
                   console.log('염판 4 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1218,7 +1186,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt4(false)
                     try {
-                      client.write('$S,O,4,0')
+                      client.write('$S,O,4,1')
                       console.log('염판 4 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1242,7 +1210,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt5(true)
                 try {
-                  client.write('$S,O,5,1')
+                  client.write('$S,O,5,0')
                   console.log('염판 1 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1286,7 +1254,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt5(false)
                     try {
-                      client.write('$S,O,5,0')
+                      client.write('$S,O,5,1')
                       console.log('염판 5 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1310,7 +1278,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt6(true)
                 try {
-                  client.write('$S,O,6,1')
+                  client.write('$S,O,6,0')
                   console.log('염판 6 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1354,7 +1322,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt6(false)
                     try {
-                      client.write('$S,O,6,0')
+                      client.write('$S,O,6,1')
                       console.log('염판 6 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1378,7 +1346,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt7(true)
                 try {
-                  client.write('$S,O,1,1')
+                  client.write('$S,O,1,0')
                   console.log('염판 7 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1422,7 +1390,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt7(false)
                     try {
-                      client.write('$S,O,7,0')
+                      client.write('$S,O,7,1')
                       console.log('염판 7 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1446,7 +1414,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt8(true)
                 try {
-                  client.write('$S,O,8,1')
+                  client.write('$S,O,8,0')
                   console.log('염판 8 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1490,7 +1458,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt8(false)
                     try {
-                      client.write('$S,O,8,0')
+                      client.write('$S,O,8,1')
                       console.log('염판 8 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1514,7 +1482,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt9(true)
                 try {
-                  client.write('$S,O,9,1')
+                  client.write('$S,O,9,0')
                   console.log('염판 9 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1558,7 +1526,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt9(false)
                     try {
-                      client.write('$S,O,9,0')
+                      client.write('$S,O,9,1')
                       console.log('염판 9 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1582,7 +1550,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt10(true)
                 try {
-                  client.write('$S,O,10,1')
+                  client.write('$S,O,10,0')
                   console.log('염판 10 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1626,7 +1594,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt1(false)
                     try {
-                      client.write('$S,O,10,0')
+                      client.write('$S,O,10,1')
                       console.log('염판 10 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1650,7 +1618,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt11(true)
                 try {
-                  client.write('$S,O,11,1')
+                  client.write('$S,O,11,0')
                   console.log('염판 11 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1694,7 +1662,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt11(false)
                     try {
-                      client.write('$S,O,11,0')
+                      client.write('$S,O,11,1')
                       console.log('염판 11 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1718,7 +1686,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt12(true)
                 try {
-                  client.write('$S,O,12,1')
+                  client.write('$S,O,12,0')
                   console.log('염판 12 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1762,7 +1730,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt12(false)
                     try {
-                      client.write('$S,O,12,0')
+                      client.write('$S,O,12,1')
                       console.log('염판 12 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1786,7 +1754,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt13(true)
                 try {
-                  client.write('$S,O,13,1')
+                  client.write('$S,O,13,0')
                   console.log('염판 13 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1830,7 +1798,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt13(false)
                     try {
-                      client.write('$S,O,13,0')
+                      client.write('$S,O,13,1')
                       console.log('염판 13 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1854,7 +1822,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt14(true)
                 try {
-                  client.write('$S,O,14,1')
+                  client.write('$S,O,14,0')
                   console.log('염판 14 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1898,7 +1866,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt14(false)
                     try {
-                      client.write('$S,O,14,0')
+                      client.write('$S,O,14,1')
                       console.log('염판 14 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1922,7 +1890,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt15(true)
                 try {
-                  client.write('$S,O,15,1')
+                  client.write('$S,O,15,0')
                   console.log('염판 15 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1966,7 +1934,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt15(false)
                     try {
-                      client.write('$S,O,15,0')
+                      client.write('$S,O,15,1')
                       console.log('염판 1 5전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -1990,7 +1958,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt16(true)
                 try {
-                  client.write('$S,O,16,1')
+                  client.write('$S,O,16,0')
                   console.log('염판 16 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2034,7 +2002,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt16(false)
                     try {
-                      client.write('$S,O,16,0')
+                      client.write('$S,O,16,1')
                       console.log('염판 16 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2058,7 +2026,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt17(true)
                 try {
-                  client.write('$S,O,17,1')
+                  client.write('$S,O,17,0')
                   console.log('염판 17 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2102,7 +2070,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt17(false)
                     try {
-                      client.write('$S,O,17,0')
+                      client.write('$S,O,17,1')
                       console.log('염판 17 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2126,7 +2094,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt18(true)
                 try {
-                  client.write('$S,O,18,1')
+                  client.write('$S,O,18,0')
                   console.log('염판 18 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2170,7 +2138,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt18(false)
                     try {
-                      client.write('$S,O,18,0')
+                      client.write('$S,O,18,1')
                       console.log('염판 18전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2194,7 +2162,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt19(true)
                 try {
-                  client.write('$S,O,19,1')
+                  client.write('$S,O,19,0')
                   console.log('염판 19 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2238,7 +2206,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt19(false)
                     try {
-                      client.write('$S,O,19,0')
+                      client.write('$S,O,19,1')
                       console.log('염판 19 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2262,7 +2230,7 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => {
                 setsolt20(true)
                 try {
-                  client.write('$S,O,20,1')
+                  client.write('$S,O,20,0')
                   console.log('염판 20 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
@@ -2306,7 +2274,7 @@ const MainSwitch = () => {
                   if (switchValue == true) {
                     setsolt20(false)
                     try {
-                      client.write('$S,O,20,0')
+                      client.write('$S,O,20,1')
                       console.log('염판 1 전송')
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
