@@ -902,7 +902,6 @@ const MainSwitch = () => {
           {/* 상태알람  */}
           {
             mainAlarm &&
-
             <View style={{ marginLeft: 10, width: chwidth - 20, backgroundColor: 'white', borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 15 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <AutoHeightImage source={alarmbtn} width={40} style={{ margin: 10 }}></AutoHeightImage>
@@ -924,7 +923,6 @@ const MainSwitch = () => {
                 </View>
               </TouchableWithoutFeedback>
             </View>
-
           }
           {/* 상태알람 끝  */}
 
@@ -940,8 +938,11 @@ const MainSwitch = () => {
                   console.log('염판 1 전송')
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
-
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -986,9 +987,13 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
+
 
                 }}>
                   <View style={{ width: offOkayW, height: offOkayH }}></View>
@@ -1011,6 +1016,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1055,9 +1064,13 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
+
 
                 }}>
                   <View style={{ width: offOkayW, height: offOkayH }}></View>
@@ -1079,6 +1092,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1123,9 +1140,13 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
+
 
                 }}>
                   <View style={{ width: offOkayW, height: offOkayH }}></View>
@@ -1147,6 +1168,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1191,9 +1216,13 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
+
 
                 }}>
                   <View style={{ width: offOkayW, height: offOkayH }}></View>
@@ -1215,6 +1244,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1259,9 +1292,13 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
+
 
                 }}>
                   <View style={{ width: offOkayW, height: offOkayH }}></View>
@@ -1283,6 +1320,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1327,9 +1368,15 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
+
+
 
                 }}>
                   <View style={{ width: offOkayW, height: offOkayH }}></View>
@@ -1351,6 +1398,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1395,6 +1446,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1419,6 +1474,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1463,6 +1522,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1487,6 +1550,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1531,6 +1598,9 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1555,6 +1625,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1599,6 +1673,9 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1623,6 +1700,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1667,6 +1748,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1691,6 +1776,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1735,6 +1824,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1759,6 +1852,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1803,6 +1900,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1827,6 +1928,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1871,6 +1976,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1895,6 +2004,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -1939,6 +2052,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -1963,6 +2080,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -2007,6 +2128,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -2031,6 +2156,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -2075,9 +2204,15 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
+
+
 
                 }}>
                   <View style={{ width: offOkayW, height: offOkayH }}></View>
@@ -2099,6 +2234,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -2143,6 +2282,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -2167,6 +2310,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -2211,6 +2358,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
@@ -2235,6 +2386,10 @@ const MainSwitch = () => {
                 } catch (error) {
                   Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                 }
+
+                setTimeout(() => {
+                  reqState()
+                }, 1000);
               }}>
                 <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
                   <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
@@ -2279,6 +2434,10 @@ const MainSwitch = () => {
                     } catch (error) {
                       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
                     }
+
+                    setTimeout(() => {
+                      reqState()
+                    }, 1000);
                   } else {
                     Alert.alert('먼저 스위치를 켜주세요')
                   }
