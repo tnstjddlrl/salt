@@ -10,6 +10,7 @@ import {
   ImageBackground,
   Alert,
   Animated,
+  Modal,
 } from 'react-native';
 
 const chwidth = Dimensions.get('window').width
@@ -83,15 +84,6 @@ const MainSwitch = () => {
     } catch (error) {
       console.log(error)
       Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
-      // client.destroy()
-
-      // setTimeout(() => {
-
-      //   client.connect({ port: 3600, host: '116.122.157.170' })
-      //   client.write('$C,O,0,0')
-      //   console.log('전송!')
-
-      // }, 1000);
     }
   }
 
@@ -129,6 +121,7 @@ const MainSwitch = () => {
           setMainAlarm(false)
           console.log('알람 꺼짐 확인')
         } else if (JSON.parse(command)[0].state == 1) {
+          fadin()
           setMainAlarm(true)
           console.log('알람 켜짐 확인')
         }
@@ -634,7 +627,7 @@ const MainSwitch = () => {
     })
 
 
-    fadin()
+
   }, [])
 
 
@@ -2460,7 +2453,13 @@ const MainSwitch = () => {
 
           {/* <View style={{ flex: 0.2 }}></View> */}
 
-
+          <Modal visible={circlewidth == 0} transparent={true}>
+            <View style={{ width: chwidth, height: '100%', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
+              <View style={{ width: chwidth / 2, height: chwidth / 2 - 50, borderRadius: chwidth / 10, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>로딩중 입니다.</Text>
+              </View>
+            </View>
+          </Modal>
 
 
         </ImageBackground>
@@ -2469,6 +2468,13 @@ const MainSwitch = () => {
     </SafeAreaView>
   )
 }
+
+
+// const SaltPan = () =>{
+//   return(
+
+//   )
+// }
 
 
 
