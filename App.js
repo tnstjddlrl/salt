@@ -9,11 +9,11 @@ import {
   TouchableWithoutFeedback,
   ImageBackground,
   Alert,
-  Image,
-  Animated
+  Animated,
 } from 'react-native';
 
 const chwidth = Dimensions.get('window').width
+const chheight = Dimensions.get('window').height
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -26,6 +26,7 @@ import { Switch } from 'react-native-switch';
 import messaging from '@react-native-firebase/messaging';
 
 import AutoHeightImage from 'react-native-auto-height-image';
+
 
 const alarmbtn = require('./img/alambtn.png')
 const redKo = require('./img/redKo.png')
@@ -2458,6 +2459,8 @@ const MainSwitch = () => {
 
 
           {/* <View style={{ flex: 0.2 }}></View> */}
+
+
 
 
         </ImageBackground>
