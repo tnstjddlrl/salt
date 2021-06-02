@@ -274,7 +274,8 @@ const MainSwitch = () => {
     client.on('data', (res) => {
       var command = '' + res
       var ccmd = command.split('_')
-      var tt = JSON.stringify(command)
+
+      var parsecmd = JSON.parse(command);
 
       console.log('데이터 받기 : ' + command)
       if ('' + res == 'main_power_off') {
@@ -282,27 +283,25 @@ const MainSwitch = () => {
         Alert.alert('메인 전원이 꺼져있습니다.', '전원을 켜주세요!')
       } else if (ccmd[0] + ccmd[1] + ccmd[2] == 'saltpoweroff') {
         Alert.alert(ccmd[3] + '번 염판 꺼짐 확인')
-      } else if (JSON.parse(command)[0].power == 1) {
+      } else if (parsecmd[0].power == 1) {
 
         setSwitchValue(true)
 
         //알람확인
-        if (JSON.parse(command)[0].state == 0) {
+        if (parsecmd[0].state == 0) {
           setMainAlarm(false)
           console.log('알람 꺼짐 확인')
-        } else if (JSON.parse(command)[0].state == 1) {
+        } else if (parsecmd[0].state == 1) {
           fadin()
           setMainAlarm(true)
           console.log('알람 켜짐 확인')
         }
 
         for (var i = 1; i <= 20; i++) {
-          console.log('체크 확인')
-          match(JSON.stringify(JSON.parse(command)[i]), i)
+          match(JSON.stringify(parsecmd[i]), i)
         }
 
       }
-
 
     })
 
@@ -311,7 +310,7 @@ const MainSwitch = () => {
   }, [])
 
   function match(json, ss) {
-
+    console.log('파라미터 확인 : ' + json)
     var state = true;
 
     if (JSON.parse(json).power == '1') {
@@ -467,26 +466,19 @@ const MainSwitch = () => {
     }, 1100);
   }
 
-  ///
-
   ////
-
-
-  ////
-
   const TestPush = () => {
     var List = []
 
     for (var i = 0; i < 20; i++) {
-      List.push(<Test index={i} id={salt[i].id} state={salt[i].state} s1={salt[i].s1} s2={salt[i].s2} s3={salt[i].s3} s4={salt[i].s4}></Test>)
+      List.push(<SoltPan index={i} id={salt[i].id} state={salt[i].state} s1={salt[i].s1} s2={salt[i].s2} s3={salt[i].s3} s4={salt[i].s4}></SoltPan>)
     }
 
     return (List)
   }
-
   ////
 
-  const Test = (prop) => {
+  const SoltPan = (prop) => {
     return (
       <View style={styles.smallcontainer}>
 
@@ -574,7 +566,7 @@ const MainSwitch = () => {
 
       </View>
     )
-  }
+  }// saltpan 끝
 
 
   return (
