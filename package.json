@@ -29,6 +29,7 @@
     "react-native-switch": "^2.0.0",
     "react-native-tcp-socket": "^5.2.0",
     "readable-stream": "^1.0.33",
+    "recoil": "^0.3.1",
     "stream-browserify": "^1.0.0"
   },
   "devDependencies": {
