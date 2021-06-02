@@ -81,6 +81,10 @@ const MainSwitch = () => {
   });
   //스타일 끝
 
+  const [switchValue, setSwitchValue] = useState(false)
+
+  const [mainAlarm, setMainAlarm] = useState(false)
+
   const [salt, setsalt] = useState([{
     id: 1,
     state: true,
@@ -329,13 +333,8 @@ const MainSwitch = () => {
 
     console.log('확인 : ' + ss)
 
-  }
+  }//match 끝
 
-
-
-
-
-  const [switchValue, setSwitchValue] = useState(false)
 
   useEffect(() => {
     // Alert.alert('스위치 값 변경')
@@ -424,16 +423,15 @@ const MainSwitch = () => {
         }
       ])
 
-
       console.log('염판 오프 확인')
     } else if (switchValue == true) {
       // reqState()
       console.log('req 확인')
     }
-  }, [switchValue])
+  }, [switchValue]) //메인 스위치 변경시 실행 함수들
 
 
-  const [mainAlarm, setMainAlarm] = useState(false)
+
 
   /// 애니메이션 속성
 
@@ -682,13 +680,13 @@ const MainSwitch = () => {
 
           {/* <View style={{ flex: 0.2 }}></View> */}
 
-          {/* <Modal visible={circlewidth == 0} transparent={true}>
+          <Modal visible={circlewidth == 0} transparent={true}>
             <View style={{ width: chwidth, height: '100%', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
               <View style={{ width: chwidth / 2, height: chwidth / 2 - 50, borderRadius: chwidth / 10, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>로딩중 입니다.</Text>
               </View>
             </View>
-          </Modal> */}
+          </Modal>
 
 
         </ImageBackground>
