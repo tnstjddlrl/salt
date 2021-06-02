@@ -478,9 +478,6 @@ const MainSwitch = () => {
     ])
 
     console.log('확인 : ')
-
-
-
   }//match 끝
 
 
