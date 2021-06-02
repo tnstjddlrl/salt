@@ -87,7 +87,7 @@ const MainSwitch = () => {
 
   const [salt, setsalt] = useState([{
     id: 1,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -95,7 +95,7 @@ const MainSwitch = () => {
   },
   {
     id: 2,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -103,7 +103,7 @@ const MainSwitch = () => {
   },
   {
     id: 3,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -111,7 +111,7 @@ const MainSwitch = () => {
   },
   {
     id: 4,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -119,7 +119,7 @@ const MainSwitch = () => {
   },
   {
     id: 5,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -127,7 +127,7 @@ const MainSwitch = () => {
   },
   {
     id: 6,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -135,7 +135,7 @@ const MainSwitch = () => {
   },
   {
     id: 7,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -143,7 +143,7 @@ const MainSwitch = () => {
   },
   {
     id: 8,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -151,7 +151,7 @@ const MainSwitch = () => {
   },
   {
     id: 9,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -159,7 +159,7 @@ const MainSwitch = () => {
   },
   {
     id: 10,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -167,7 +167,7 @@ const MainSwitch = () => {
   },
   {
     id: 11,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -175,7 +175,7 @@ const MainSwitch = () => {
   },
   {
     id: 12,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -183,7 +183,7 @@ const MainSwitch = () => {
   },
   {
     id: 13,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -191,7 +191,7 @@ const MainSwitch = () => {
   },
   {
     id: 14,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -199,7 +199,7 @@ const MainSwitch = () => {
   },
   {
     id: 15,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -207,7 +207,7 @@ const MainSwitch = () => {
   },
   {
     id: 16,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -215,7 +215,7 @@ const MainSwitch = () => {
   },
   {
     id: 17,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -223,7 +223,7 @@ const MainSwitch = () => {
   },
   {
     id: 18,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -231,7 +231,7 @@ const MainSwitch = () => {
   },
   {
     id: 19,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -239,7 +239,7 @@ const MainSwitch = () => {
   },
   {
     id: 20,
-    state: true,
+    state: '0',
     s1: '0',
     s2: '0',
     s3: '0',
@@ -297,9 +297,7 @@ const MainSwitch = () => {
           console.log('알람 켜짐 확인')
         }
 
-        for (var i = 1; i <= 20; i++) {
-          match(JSON.stringify(parsecmd[i]), i)
-        }
+        match(JSON.stringify(parsecmd))
 
       }
 
@@ -309,28 +307,179 @@ const MainSwitch = () => {
 
   }, [])
 
-  function match(json, ss) {
-    console.log('파라미터 확인 : ' + json)
-    var state = true;
+  function match(json) {
+    var parsejson = JSON.parse(json)
 
-    if (JSON.parse(json).power == '1') {
-      state = false;
-    }
+    setsalt(perv => [
+      {
+        ...perv[0],
 
-    setsalt(perv => [...perv.slice(0, ss - 1),
-    {
-      ...perv[ss - 1],
-      id: ss,
-      state: state,
-      s1: JSON.parse(json).state.split(':')[0],
-      s2: JSON.parse(json).state.split(':')[1],
-      s3: JSON.parse(json).state.split(':')[2],
-      s4: JSON.parse(json).state.split(':')[3]
-    },
-    ...perv.slice(ss, 20)
+        state: parsejson[1].power,
+        s1: parsejson[1].state.split(':')[0],
+        s2: parsejson[1].state.split(':')[1],
+        s3: parsejson[1].state.split(':')[2],
+        s4: parsejson[1].state.split(':')[3]
+      },
+      {
+        ...perv[1],
+
+        state: parsejson[2].power,
+        s1: parsejson[2].state.split(':')[0],
+        s2: parsejson[2].state.split(':')[1],
+        s3: parsejson[2].state.split(':')[2],
+        s4: parsejson[2].state.split(':')[3]
+      },
+      {
+        ...perv[2],
+
+        state: parsejson[3].power,
+        s1: parsejson[3].state.split(':')[0],
+        s2: parsejson[3].state.split(':')[1],
+        s3: parsejson[3].state.split(':')[2],
+        s4: parsejson[3].state.split(':')[3]
+      },
+      {
+        ...perv[3],
+
+        state: parsejson[4].power,
+        s1: parsejson[4].state.split(':')[0],
+        s2: parsejson[4].state.split(':')[1],
+        s3: parsejson[4].state.split(':')[2],
+        s4: parsejson[4].state.split(':')[3]
+      },
+      {
+        ...perv[4],
+        state: parsejson[5].power,
+        s1: parsejson[5].state.split(':')[0],
+        s2: parsejson[5].state.split(':')[1],
+        s3: parsejson[5].state.split(':')[2],
+        s4: parsejson[5].state.split(':')[3]
+      },
+      {
+        ...perv[5],
+        state: parsejson[6].power,
+        s1: parsejson[6].state.split(':')[0],
+        s2: parsejson[6].state.split(':')[1],
+        s3: parsejson[6].state.split(':')[2],
+        s4: parsejson[6].state.split(':')[3]
+      },
+      {
+        ...perv[6],
+        state: parsejson[7].power,
+        s1: parsejson[7].state.split(':')[0],
+        s2: parsejson[7].state.split(':')[1],
+        s3: parsejson[7].state.split(':')[2],
+        s4: parsejson[7].state.split(':')[3]
+      },
+      {
+        ...perv[7],
+        state: parsejson[8].power,
+        s1: parsejson[8].state.split(':')[0],
+        s2: parsejson[8].state.split(':')[1],
+        s3: parsejson[8].state.split(':')[2],
+        s4: parsejson[8].state.split(':')[3]
+      },
+      {
+        ...perv[8],
+        state: parsejson[9].power,
+        s1: parsejson[9].state.split(':')[0],
+        s2: parsejson[9].state.split(':')[1],
+        s3: parsejson[9].state.split(':')[2],
+        s4: parsejson[9].state.split(':')[3]
+      },
+      {
+        ...perv[9],
+        state: parsejson[10].power,
+        s1: parsejson[10].state.split(':')[0],
+        s2: parsejson[10].state.split(':')[1],
+        s3: parsejson[10].state.split(':')[2],
+        s4: parsejson[10].state.split(':')[3]
+      },
+      {
+        ...perv[10],
+        state: parsejson[11].power,
+        s1: parsejson[11].state.split(':')[0],
+        s2: parsejson[11].state.split(':')[1],
+        s3: parsejson[11].state.split(':')[2],
+        s4: parsejson[11].state.split(':')[3]
+      },
+      {
+        ...perv[11],
+        state: parsejson[12].power,
+        s1: parsejson[12].state.split(':')[0],
+        s2: parsejson[12].state.split(':')[1],
+        s3: parsejson[12].state.split(':')[2],
+        s4: parsejson[12].state.split(':')[3]
+      },
+      {
+        ...perv[12],
+        state: parsejson[13].power,
+        s1: parsejson[13].state.split(':')[0],
+        s2: parsejson[13].state.split(':')[1],
+        s3: parsejson[13].state.split(':')[2],
+        s4: parsejson[13].state.split(':')[3]
+      },
+      {
+        ...perv[13],
+        state: parsejson[14].power,
+        s1: parsejson[14].state.split(':')[0],
+        s2: parsejson[14].state.split(':')[1],
+        s3: parsejson[14].state.split(':')[2],
+        s4: parsejson[14].state.split(':')[3]
+      },
+      {
+        ...perv[14],
+        state: parsejson[15].power,
+        s1: parsejson[15].state.split(':')[0],
+        s2: parsejson[15].state.split(':')[1],
+        s3: parsejson[15].state.split(':')[2],
+        s4: parsejson[15].state.split(':')[3]
+      },
+      {
+        ...perv[15],
+        state: parsejson[16].power,
+        s1: parsejson[16].state.split(':')[0],
+        s2: parsejson[16].state.split(':')[1],
+        s3: parsejson[16].state.split(':')[2],
+        s4: parsejson[16].state.split(':')[3]
+      },
+      {
+        ...perv[16],
+        state: parsejson[17].power,
+        s1: parsejson[17].state.split(':')[0],
+        s2: parsejson[17].state.split(':')[1],
+        s3: parsejson[17].state.split(':')[2],
+        s4: parsejson[17].state.split(':')[3]
+      },
+      {
+        ...perv[17],
+        state: parsejson[18].power,
+        s1: parsejson[18].state.split(':')[0],
+        s2: parsejson[18].state.split(':')[1],
+        s3: parsejson[18].state.split(':')[2],
+        s4: parsejson[18].state.split(':')[3]
+      },
+      {
+        ...perv[18],
+        state: parsejson[19].power,
+        s1: parsejson[19].state.split(':')[0],
+        s2: parsejson[19].state.split(':')[1],
+        s3: parsejson[19].state.split(':')[2],
+        s4: parsejson[19].state.split(':')[3]
+      },
+      {
+        ...perv[19],
+        state: parsejson[20].power,
+        s1: parsejson[20].state.split(':')[0],
+        s2: parsejson[20].state.split(':')[1],
+        s3: parsejson[20].state.split(':')[2],
+        s4: parsejson[20].state.split(':')[3]
+      },
     ])
 
-    console.log('확인 : ' + ss)
+    console.log('확인 : ')
+
+
 
   }//match 끝
 
@@ -342,83 +491,83 @@ const MainSwitch = () => {
       setsalt(perv => [
         {
           ...perv[0],
-          state: true,
+          state: '0',
         },
         {
           ...perv[1],
-          state: true
+          state: '0'
         },
         {
           ...perv[2],
-          state: true
+          state: '0'
         },
         {
           ...perv[3],
-          state: true
+          state: '0'
         },
         {
           ...perv[4],
-          state: true
+          state: '0'
         },
         {
           ...perv[5],
-          state: true
+          state: '0'
         },
         {
           ...perv[6],
-          state: true
+          state: '0'
         },
         {
           ...perv[7],
-          state: true
+          state: '0'
         },
         {
           ...perv[8],
-          state: true
+          state: '0'
         },
         {
           ...perv[9],
-          state: true
+          state: '0'
         },
         {
           ...perv[10],
-          state: true
+          state: '0'
         },
         {
           ...perv[11],
-          state: true
+          state: '0'
         },
         {
           ...perv[12],
-          state: true
+          state: '0'
         },
         {
           ...perv[13],
-          state: true
+          state: '0'
         },
         {
           ...perv[14],
-          state: true
+          state: '0'
         },
         {
           ...perv[15],
-          state: true
+          state: '0'
         },
         {
           ...perv[16],
-          state: true
+          state: '0'
         },
         {
           ...perv[17],
-          state: true
+          state: '0'
         },
         {
           ...perv[18],
-          state: true
+          state: '0'
         },
         {
           ...perv[19],
-          state: true
+          state: '0'
         }
       ])
 
@@ -486,7 +635,7 @@ const MainSwitch = () => {
           setsalt(prev => [...prev.slice(0, prop.index),
           {
             ...prev[prop.index],
-            state: true,
+            state: '0',
           },
           ...prev.slice(prop.index + 1, salt.length)
           ])
@@ -534,14 +683,14 @@ const MainSwitch = () => {
 
         <View style={{ flex: 0.3 }}></View>
 
-        {prop.state && <View style={{ width: chwidth - 20, position: 'absolute', backgroundColor: 'rgba(13, 13, 13, 0.6)', borderRadius: 10 }}>
+        {prop.state == '0' && <View style={{ width: chwidth - 20, position: 'absolute', backgroundColor: 'rgba(13, 13, 13, 0.6)', borderRadius: 10 }}>
           <TouchableWithoutFeedback onPress={() => {
             console.log('클릭확인')
             if (switchValue == true) {
               setsalt(prev => [...prev.slice(0, prop.index),
               {
                 ...prev[prop.index],
-                state: false,
+                state: '1',
               },
               ...prev.slice(prop.index + 1, salt.length)
               ])
