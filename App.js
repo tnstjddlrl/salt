@@ -274,15 +274,14 @@ const MainSwitch = () => {
     client.on('data', (res) => {
       var command = '' + res
       var ccmd = command.split('_')
-
       var parsecmd = JSON.parse(command);
 
       console.log('데이터 받기 : ' + command)
+
+      //메인전원확인,전원켜져있음 데이터 받기
       if ('' + res == 'main_power_off') {
         setSwitchValue(false)
         Alert.alert('메인 전원이 꺼져있습니다.', '전원을 켜주세요!')
-      } else if (ccmd[0] + ccmd[1] + ccmd[2] == 'saltpoweroff') {
-        Alert.alert(ccmd[3] + '번 염판 꺼짐 확인')
       } else if (parsecmd[0].power == 1) {
 
         setSwitchValue(true)
@@ -297,15 +296,11 @@ const MainSwitch = () => {
           console.log('알람 켜짐 확인')
         }
 
+        //데이터 배열에 집어넣기
         match(JSON.stringify(parsecmd))
-
       }
-
-    })
-
-
-
-  }, [])
+    })//클라온 끝
+  }, [])//useeffect 끝
 
   function match(json) {
     var parsejson = JSON.parse(json)
@@ -482,9 +477,7 @@ const MainSwitch = () => {
 
 
   useEffect(() => {
-    // Alert.alert('스위치 값 변경')
     if (switchValue == false) {
-
       setsalt(perv => [
         {
           ...perv[0],
@@ -573,13 +566,12 @@ const MainSwitch = () => {
       // reqState()
       console.log('req 확인')
     }
-  }, [switchValue]) //메인 스위치 변경시 실행 함수들
+  }, [switchValue]) //메인 스위치 변경시 실행 함수들, useeffect
 
 
 
 
   /// 애니메이션 속성
-
   const fadeAnim = useRef(new Animated.Value(0)).current
 
   function fadin() {
@@ -596,7 +588,6 @@ const MainSwitch = () => {
       fadout()
     }, 1100);
   }
-
   function fadout() {
     Animated.timing(
       fadeAnim,
@@ -611,9 +602,10 @@ const MainSwitch = () => {
       fadin()
     }, 1100);
   }
+  //// 애니메이션 속성 끝
 
-  ////
-  const TestPush = () => {
+  //염판 정보를 jsx로 변환하여 뿌려주기
+  const SaltPush = () => {
     var List = []
 
     for (var i = 0; i < 20; i++) {
@@ -622,8 +614,9 @@ const MainSwitch = () => {
 
     return (List)
   }
-  ////
+  //SaltPush 끝
 
+  //염판 jsx, 프롭으로 받아서 정보 표현하기// 자동으로 값들이 변경되어 보임
   const SoltPan = (prop) => {
     return (
       <View style={styles.smallcontainer}>
@@ -715,6 +708,7 @@ const MainSwitch = () => {
   }// saltpan 끝
 
 
+  //메인스위치 return //
   return (
     <SafeAreaView style={{ backgroundColor: 'white' }}>
       <View style={{ width: chwidth, height: '100%', backgroundColor: 'white' }}>
@@ -805,7 +799,7 @@ const MainSwitch = () => {
 
             {/* 염판 1 */}
 
-            <TestPush></TestPush>
+            <SaltPush></SaltPush>
 
 
             <View style={{ height: 20 }}></View>
@@ -831,18 +825,8 @@ const MainSwitch = () => {
       </View>
 
     </SafeAreaView>
-  )
+  )//메인스위치 return 끝
+
 }
-
-
-// const SaltPan = () =>{
-//   return(
-
-//   )
-// }
-
-
-
-
 
 export default App;
