@@ -259,9 +259,9 @@ const MainSwitch = () => {
 
   const focusis = navigation.addListener('focus', () => {
     reqState()
-    // setInterval(() => {
-    //   reqState()
-    // }, 5000);
+    setInterval(() => {
+      reqState()
+    }, 5000);
   })
   useEffect(() => {
     return () => {
@@ -274,7 +274,7 @@ const MainSwitch = () => {
     client.on('data', (res) => {
       var command = '' + res
       var ccmd = command.split('_')
-      var parsecmd = JSON.parse(command);
+
 
       console.log('데이터 받기 : ' + command)
 
@@ -282,8 +282,8 @@ const MainSwitch = () => {
       if ('' + res == 'main_power_off') {
         setSwitchValue(false)
         Alert.alert('메인 전원이 꺼져있습니다.', '전원을 켜주세요!')
-      } else if (parsecmd[0].power == 1) {
-
+      } else if (JSON.parse(command)[0].power == 1) {
+        var parsecmd = JSON.parse(command);
         setSwitchValue(true)
 
         //알람확인
