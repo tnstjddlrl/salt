@@ -99,9 +99,10 @@ const MainSwitch = () => {
       LayoutAnimation.create(
         500,
         LayoutAnimation.Types.easeInEaseOut,
-        LayoutAnimation.Properties.opacity
+        LayoutAnimation.Properties.opacity,
       )
     );
+    if (mainAlarm === false) fadin()
     setMainAlarm(mainAlarm === false ? true : false);
   };
 
@@ -527,9 +528,12 @@ const MainSwitch = () => {
       }
     ).start();
 
-    setTimeout(() => {
-      fadin()
-    }, 1100);
+    if (mainAlarm == false) {
+      setTimeout(() => {
+        fadin()
+      }, 1100);
+    }
+
   }
   //// 애니메이션 속성 끝
 
