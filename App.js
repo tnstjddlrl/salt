@@ -259,9 +259,9 @@ const MainSwitch = () => {
 
   const focusis = navigation.addListener('focus', () => {
     reqState()
-    setInterval(() => {
-      reqState()
-    }, 5000);
+    // setInterval(() => {
+    //   reqState()
+    // }, 5000);
   })
   useEffect(() => {
     return () => {
@@ -640,8 +640,8 @@ const MainSwitch = () => {
             reqState()
           }, 1000);
         }}>
-          <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5 }}>
-            <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15, width: 70 }}>
+          <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5, flex: 1, }}>
+            <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
               <Text style={{ color: 'white', fontSize: 20 }}>염판 {prop.id}</Text>
             </View>
           </View>
@@ -812,13 +812,13 @@ const MainSwitch = () => {
 
           {/* <View style={{ flex: 0.2 }}></View> */}
 
-          <Modal visible={circlewidth == 0} transparent={true}>
+          {/* <Modal visible={circlewidth == 0} transparent={true}>
             <View style={{ width: chwidth, height: '100%', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
               <View style={{ width: chwidth / 2, height: chwidth / 2 - 50, borderRadius: chwidth / 10, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>로딩중 입니다.</Text>
               </View>
             </View>
-          </Modal>
+          </Modal> */}
 
 
         </ImageBackground>
