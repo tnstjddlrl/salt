@@ -28,7 +28,6 @@ import messaging from '@react-native-firebase/messaging';
 
 import AutoHeightImage from 'react-native-auto-height-image';
 import { RecoilRoot, useRecoilState, waitForAll } from 'recoil';
-import { saltstate, saltTest } from './atom';
 
 
 const alarmbtn = require('./img/alambtn.png')
@@ -639,7 +638,7 @@ const MainSwitch = () => {
                 value={switchValue}
                 onValueChange={(val) => {
                   if (val == true) {
-                    console.log('메인 트ㄹ루')
+
                     try {
                       client.write('$P,O,1,0')
                     } catch (error) {
@@ -648,10 +647,10 @@ const MainSwitch = () => {
 
                     setTimeout(() => {
                       reqState()
-
                     }, 1000);
+
                   } else if (val == false) {
-                    console.log('메인 폴스')
+
                     try {
                       client.write('$P,O,0,0')
                     } catch (error) {
@@ -659,7 +658,9 @@ const MainSwitch = () => {
                     }
 
                   }
+
                   setSwitchValue(val)
+
                 }}
                 disabled={false}
                 activeText={'On'}
@@ -732,7 +733,6 @@ const MainSwitch = () => {
 
     </SafeAreaView>
   )//메인스위치 return 끝
-
 }
 
-export default App;
+export default React.memo(App);
