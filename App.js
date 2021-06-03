@@ -11,6 +11,9 @@ import {
   Alert,
   Animated,
   Modal,
+  UIManager,
+  LayoutAnimation,
+
 } from 'react-native';
 
 const chwidth = Dimensions.get('window').width
@@ -61,6 +64,13 @@ const oceanImg = require('./img/ocean.png')
 const MainSwitch = () => {
   const navigation = useNavigation()
 
+  if (
+    Platform.OS === "android" &&
+    UIManager.setLayoutAnimationEnabledExperimental
+  ) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+
   //스타일 
   const [circlewidth, setCirclewidth] = useState(0)
 
@@ -83,6 +93,17 @@ const MainSwitch = () => {
   const [switchValue, setSwitchValue] = useState(false)
 
   const [mainAlarm, setMainAlarm] = useState(false)
+
+  const toggleAlert = () => {
+    LayoutAnimation.configureNext(
+      LayoutAnimation.create(
+        500,
+        LayoutAnimation.Types.easeInEaseOut,
+        LayoutAnimation.Properties.opacity
+      )
+    );
+    setMainAlarm(mainAlarm === false ? true : false);
+  };
 
   const [salt, setsalt] = useState([
     {
@@ -627,7 +648,7 @@ const MainSwitch = () => {
           <View style={{ marginTop: 20, marginLeft: 15, marginBottom: 20, width: chwidth - 25, flexDirection: 'row', justifyContent: 'space-between' }}>
             <View>
               <View style={{ width: 15, height: 5, backgroundColor: 'red', marginBottom: 5 }}></View>
-              <TouchableWithoutFeedback onPress={() => { if (mainAlarm == false) setMainAlarm(true); else setMainAlarm(false) }}>
+              <TouchableWithoutFeedback onPress={() => { toggleAlert() }}>
                 <Text style={{ color: 'white', fontSize: 25, fontFamily: 'Arita-buriB' }}>염전</Text>
               </TouchableWithoutFeedback>
               <Text style={{ color: 'white', fontSize: 25, fontFamily: 'Arita-buriB' }}>스마트 ON, OFF</Text>
@@ -689,7 +710,9 @@ const MainSwitch = () => {
           {/* 상태알람  */}
           {
             mainAlarm &&
-            <View style={{ marginLeft: 10, width: chwidth - 20, backgroundColor: 'white', borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 15 }}>
+            <View style={[{
+              height: 0, marginLeft: 10, width: chwidth - 20, backgroundColor: 'white', borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 15
+            }, mainAlarm === false ? null : { height: 60 }]}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <AutoHeightImage source={alarmbtn} width={40} style={{ margin: 10 }}></AutoHeightImage>
                 <Text style={{ fontWeight: 'bold' }}>상태 알람</Text>
@@ -699,11 +722,15 @@ const MainSwitch = () => {
               </View>
               <TouchableWithoutFeedback onPress={() => {
                 console.log('확인')
-                client.write('$E,O,0,0')
+                try {
+                  client.write('$E,O,0,0')
+                } catch (error) {
+                  Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
+                }
                 setTimeout(() => {
                   reqState()
                 }, 1000);
-                setMainAlarm(false)
+                toggleAlert()
               }}>
                 <View style={{ width: 70, borderRadius: 8, backgroundColor: 'rgb(221,221,221)', alignItems: 'center', justifyContent: 'center', marginRight: 10 }}>
                   <Text style={{ margin: 7 }}>확인</Text>
