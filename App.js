@@ -797,21 +797,12 @@ const MainSwitch = () => {
 
           <ScrollView style={{ marginLeft: 10 }} showsVerticalScrollIndicator={false}>
 
-            {/* 염판 1 */}
-
+            {/* 염판 */}
             <SaltPush></SaltPush>
-
-
-            <View style={{ height: 20 }}></View>
-
 
           </ScrollView>
 
-
-
-
-          {/* <View style={{ flex: 0.2 }}></View> */}
-
+          {/* 로딩창 */}
           {/* <Modal visible={circlewidth == 0} transparent={true}>
             <View style={{ width: chwidth, height: '100%', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
               <View style={{ width: chwidth / 2, height: chwidth / 2 - 50, borderRadius: chwidth / 10, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
@@ -819,7 +810,6 @@ const MainSwitch = () => {
               </View>
             </View>
           </Modal> */}
-
 
         </ImageBackground>
       </View>
