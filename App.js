@@ -317,7 +317,6 @@ const MainSwitch = () => {
       },
       {
         ...perv[1],
-
         state: parsejson[2].power,
         s1: parsejson[2].state.split(':')[0],
         s2: parsejson[2].state.split(':')[1],
@@ -326,7 +325,6 @@ const MainSwitch = () => {
       },
       {
         ...perv[2],
-
         state: parsejson[3].power,
         s1: parsejson[3].state.split(':')[0],
         s2: parsejson[3].state.split(':')[1],
@@ -335,7 +333,6 @@ const MainSwitch = () => {
       },
       {
         ...perv[3],
-
         state: parsejson[4].power,
         s1: parsejson[4].state.split(':')[0],
         s2: parsejson[4].state.split(':')[1],
@@ -471,105 +468,17 @@ const MainSwitch = () => {
         s4: parsejson[20].state.split(':')[3]
       },
     ])
-
     console.log('확인 : ')
-  }//match 끝
-
+  }//match 끝 //json형태로 서버에서 들어온 값을 배열에 넣어주는 역활
 
   useEffect(() => {
     if (switchValue == false) {
-      setsalt(perv => [
-        {
-          ...perv[0],
-          state: '0',
-        },
-        {
-          ...perv[1],
-          state: '0'
-        },
-        {
-          ...perv[2],
-          state: '0'
-        },
-        {
-          ...perv[3],
-          state: '0'
-        },
-        {
-          ...perv[4],
-          state: '0'
-        },
-        {
-          ...perv[5],
-          state: '0'
-        },
-        {
-          ...perv[6],
-          state: '0'
-        },
-        {
-          ...perv[7],
-          state: '0'
-        },
-        {
-          ...perv[8],
-          state: '0'
-        },
-        {
-          ...perv[9],
-          state: '0'
-        },
-        {
-          ...perv[10],
-          state: '0'
-        },
-        {
-          ...perv[11],
-          state: '0'
-        },
-        {
-          ...perv[12],
-          state: '0'
-        },
-        {
-          ...perv[13],
-          state: '0'
-        },
-        {
-          ...perv[14],
-          state: '0'
-        },
-        {
-          ...perv[15],
-          state: '0'
-        },
-        {
-          ...perv[16],
-          state: '0'
-        },
-        {
-          ...perv[17],
-          state: '0'
-        },
-        {
-          ...perv[18],
-          state: '0'
-        },
-        {
-          ...perv[19],
-          state: '0'
-        }
-      ])
-
-      console.log('염판 오프 확인')
+      setsalt(perv => [{ ...perv[0], state: '0', }, { ...perv[1], state: '0' }, { ...perv[2], state: '0' }, { ...perv[3], state: '0' }, { ...perv[4], state: '0' }, { ...perv[5], state: '0' }, { ...perv[6], state: '0' }, { ...perv[7], state: '0' }, { ...perv[8], state: '0' }, { ...perv[9], state: '0' }, { ...perv[10], state: '0' }, { ...perv[11], state: '0' }, { ...perv[12], state: '0' }, { ...perv[13], state: '0' }, { ...perv[14], state: '0' }, { ...perv[15], state: '0' }, { ...perv[16], state: '0' }, { ...perv[17], state: '0' }, { ...perv[18], state: '0' }, { ...perv[19], state: '0' }])
     } else if (switchValue == true) {
-      // reqState()
-      console.log('req 확인')
+      reqState()
     }
   }, [switchValue]) //메인 스위치 변경시 실행 함수들, useeffect
-
-
-
+  //스위치가 off가 되면 모든 염판을 off상태로 바꾸어줌
 
   /// 애니메이션 속성
   const fadeAnim = useRef(new Animated.Value(0)).current
@@ -612,15 +521,15 @@ const MainSwitch = () => {
       List.push(<SoltPan index={i} id={salt[i].id} state={salt[i].state} s1={salt[i].s1} s2={salt[i].s2} s3={salt[i].s3} s4={salt[i].s4}></SoltPan>)
     }
 
-    return (List)
-  }
-  //SaltPush 끝
+    return List
+  }//SaltPush 끝
 
   //염판 jsx, 프롭으로 받아서 정보 표현하기// 자동으로 값들이 변경되어 보임
   const SoltPan = (prop) => {
     return (
       <View style={styles.smallcontainer}>
 
+        {/* 염판 글자부분 */}
         <TouchableWithoutFeedback onPress={() => {
           setsalt(prev => [...prev.slice(0, prop.index),
           {
@@ -635,7 +544,6 @@ const MainSwitch = () => {
           } catch (error) {
             Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
           }
-
           setTimeout(() => {
             reqState()
           }, 1000);
@@ -646,9 +554,11 @@ const MainSwitch = () => {
             </View>
           </View>
         </TouchableWithoutFeedback>
+        {/* 염판 글자부분 끝 */}
 
         <View style={{ flex: 0.3 }}></View>
 
+        {/* 수문 확인 부분 */}
         <View style={{ flexDirection: 'row', flex: 2 }}>
           {prop.s1 == '0' ?
             <View onLayout={(data) => { setCirclewidth(data.nativeEvent.layout.width) }} style={styles.circleStateGreen}></View> :
@@ -670,9 +580,11 @@ const MainSwitch = () => {
             <View style={styles.circleStateRed}></View>
           }
         </View>
+        {/* 수문 확인 부분 끝 */}
 
         <View style={{ flex: 0.3 }}></View>
 
+        {/* off상태 표현창 */}
         {prop.state == '0' && <View style={{ width: chwidth - 20, position: 'absolute', backgroundColor: 'rgba(13, 13, 13, 0.6)', borderRadius: 10 }}>
           <TouchableWithoutFeedback onPress={() => {
             console.log('클릭확인')
@@ -696,17 +608,15 @@ const MainSwitch = () => {
             } else {
               Alert.alert('먼저 스위치를 켜주세요')
             }
-
-
           }}>
             <View style={{ width: chwidth - 20, height: 70 }}></View>
           </TouchableWithoutFeedback>
         </View>}
+        {/* off상태 표현창 끝 */}
 
       </View>
     )
   }// saltpan 끝
-
 
   //메인스위치 return //
   return (
@@ -730,7 +640,11 @@ const MainSwitch = () => {
                 onValueChange={(val) => {
                   if (val == true) {
                     console.log('메인 트ㄹ루')
-                    client.write('$P,O,1,0')
+                    try {
+                      client.write('$P,O,1,0')
+                    } catch (error) {
+                      Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
+                    }
 
                     setTimeout(() => {
                       reqState()
@@ -738,7 +652,11 @@ const MainSwitch = () => {
                     }, 1000);
                   } else if (val == false) {
                     console.log('메인 폴스')
-                    client.write('$P,O,0,0')
+                    try {
+                      client.write('$P,O,0,0')
+                    } catch (error) {
+                      Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
+                    }
 
                   }
                   setSwitchValue(val)
@@ -766,7 +684,6 @@ const MainSwitch = () => {
             </View>
           </View>
           {/* 헤더 끝 */}
-
 
           {/* 상태알람  */}
           {
@@ -810,7 +727,6 @@ const MainSwitch = () => {
               </View>
             </View>
           </Modal> */}
-
         </ImageBackground>
       </View>
 
