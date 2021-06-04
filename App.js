@@ -27,6 +27,8 @@ import client from './client'
 
 import { Switch } from 'react-native-switch';
 
+import RNExitApp from 'react-native-kill-app';
+
 import messaging from '@react-native-firebase/messaging';
 
 import AutoHeightImage from 'react-native-auto-height-image';
@@ -275,7 +277,7 @@ const MainSwitch = () => {
       console.log('전송!')
     } catch (error) {
       console.log(error)
-      Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
+      exitAlert()
     }
   }
 
@@ -290,6 +292,15 @@ const MainSwitch = () => {
       focusis()
     }
   })
+
+  //
+
+  function exitAlert() {
+    Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.',
+      [
+        { text: "OK", onPress: () => RNExitApp.exitApp() }
+      ])
+  }
 
   //
   useEffect(() => {
@@ -566,7 +577,7 @@ const MainSwitch = () => {
             client.write('$S,O,' + prop.id + ',0')
             console.log('염판 ' + prop.id + ' 전송')
           } catch (error) {
-            Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
+            exitAlert()
           }
           setTimeout(() => {
             reqState()
@@ -624,7 +635,7 @@ const MainSwitch = () => {
                 client.write('$S,O,' + prop.id + ',1')
                 console.log('염판 ' + prop.id + ' 전송')
               } catch (error) {
-                Alert.alert('서버와 연결이 끊겼습니다.', '앱을 종료 후 다시 실행해주세요.')
+                exitAlert()
               }
               setTimeout(() => {
                 reqState()
@@ -667,7 +678,7 @@ const MainSwitch = () => {
                     try {
                       client.write('$P,O,1,0')
                     } catch (error) {
-                      Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
+                      exitAlert()
                     }
 
                     setTimeout(() => {
@@ -679,7 +690,7 @@ const MainSwitch = () => {
                     try {
                       client.write('$P,O,0,0')
                     } catch (error) {
-                      Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
+                      exitAlert()
                     }
 
                   }
@@ -729,7 +740,7 @@ const MainSwitch = () => {
                 try {
                   client.write('$E,O,0,0')
                 } catch (error) {
-                  Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.')
+                  exitAlert()
                 }
                 setTimeout(() => {
                   reqState()
