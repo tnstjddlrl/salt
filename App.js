@@ -308,7 +308,6 @@ const MainSwitch = () => {
       var command = '' + res
       var ccmd = command.split('_')
 
-
       console.log('데이터 받기 : ' + command)
 
       //메인전원확인,전원켜져있음 데이터 받기
@@ -320,12 +319,11 @@ const MainSwitch = () => {
         setSwitchValue(true)
 
         //알람확인
-        if (parsecmd[0].state == 0) {
-          setMainAlarm(false)
-          console.log('알람 꺼짐 확인')
-        } else if (parsecmd[0].state == 1) {
-          fadin()
-          setMainAlarm(true)
+        if (parsecmd[0].state == 0 && mainAlarm == true) {
+          toggleAlert()
+          console.log('알람 켜짐 확인')
+        } else if (parsecmd[0].state == 1 && mainAlarm == false) {
+          toggleAlert()
           console.log('알람 켜짐 확인')
         }
 
