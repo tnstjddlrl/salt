@@ -306,7 +306,6 @@ const MainSwitch = () => {
   useEffect(() => {
     client.on('data', (res) => {
       var command = '' + res
-      var ccmd = command.split('_')
 
       console.log('데이터 받기 : ' + command)
 
@@ -620,7 +619,6 @@ const MainSwitch = () => {
         {/* off상태 표현창 */}
         {prop.state == '0' && <View style={{ width: chwidth - 20, position: 'absolute', backgroundColor: 'rgba(13, 13, 13, 0.6)', borderRadius: 10 }}>
           <TouchableWithoutFeedback onPress={() => {
-            console.log('클릭확인')
             if (switchValue == true) {
               setsalt(prev => [...prev.slice(0, prop.index),
               {
@@ -734,7 +732,6 @@ const MainSwitch = () => {
                 </Animated.View>
               </View>
               <TouchableWithoutFeedback onPress={() => {
-                console.log('확인')
                 try {
                   client.write('$E,O,0,0')
                 } catch (error) {
