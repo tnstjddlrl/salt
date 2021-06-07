@@ -10,7 +10,6 @@ import {
   ImageBackground,
   Alert,
   Animated,
-  Modal,
   UIManager,
   LayoutAnimation,
 
@@ -21,7 +20,6 @@ const chheight = Dimensions.get('window').height
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import axios from 'axios'
 
 import client from './client'
 
