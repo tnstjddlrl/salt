@@ -71,7 +71,7 @@ const MainSwitch = () => {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 
-  //스타일 
+  //스타일
   const [circlewidth, setCirclewidth] = useState(0)
 
   const styles = StyleSheet.create({
@@ -296,7 +296,11 @@ const MainSwitch = () => {
   function exitAlert() {
     Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.',
       [
-        { text: "OK", onPress: () => RNExitApp.exitApp() }
+        {
+          text: "OK", onPress: () =>
+            console.log('체크')
+          // RNExitApp.exitApp() 
+        }
       ])
   }
 
@@ -610,7 +614,7 @@ const MainSwitch = () => {
             <View style={styles.circleStateRed}></View>
           }
         </View>
-        {/* 수문 확인 부분 끝 */}
+        {/* 수문 확인 부분 끝 // 서클 크기 결정 고민 */}
 
         <View style={{ flex: 0.3 }}></View>
 
