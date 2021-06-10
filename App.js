@@ -667,6 +667,7 @@ const MainSwitch = () => {
               <Text style={{ color: 'white', fontSize: 25, fontFamily: 'Arita-buriB' }}>스마트 ON, OFF</Text>
             </View>
 
+            {/* 스위치 */}
             <View style={{ marginTop: '5%' }}>
               <Switch
                 value={switchValue}
@@ -717,7 +718,10 @@ const MainSwitch = () => {
                 switchBorderRadius={30}
               />
             </View>
+            {/* 스위치 끝 */}
+
           </View>
+
           {/* 헤더 끝 */}
 
           {/* 상태알람  */}
@@ -752,12 +756,14 @@ const MainSwitch = () => {
           }
           {/* 상태알람 끝  */}
 
+          {/* 염판 담는 스크롤뷰 */}
           <ScrollView style={{ marginLeft: 10 }} showsVerticalScrollIndicator={false}>
 
             {/* 염판 */}
             <SaltPush></SaltPush>
 
           </ScrollView>
+          {/* 염판 담는 스크롤뷰 끝 */}
 
         </ImageBackground>
       </View>
