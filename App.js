@@ -49,13 +49,11 @@ const App = () => {
   }, []);
 
   return (
-    <RecoilRoot>
-      <NavigationContainer>
-        <Stack.Navigator headerMode={"none"}>
-          <Stack.Screen name="메인스위치" component={MainSwitch} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </RecoilRoot>
+    <NavigationContainer>
+      <Stack.Navigator headerMode={"none"}>
+        <Stack.Screen name="메인스위치" component={MainSwitch} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
