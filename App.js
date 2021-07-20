@@ -313,6 +313,8 @@ const MainSwitch = () => {
       if ('' + res == 'main_power_off') {
         setSwitchValue(false)
         Alert.alert('메인 전원이 꺼져있습니다.', '전원을 켜주세요!')
+      } else if ('' + res == 'state_check') {
+        reqState()//상태체크
       } else if (JSON.parse(command)[0].power == 1) {
         var parsecmd = JSON.parse(command);
         setSwitchValue(true)
