@@ -32,6 +32,8 @@ import messaging from '@react-native-firebase/messaging';
 import AutoHeightImage from 'react-native-auto-height-image';
 import { RecoilRoot, useRecoilState, waitForAll } from 'recoil';
 
+import RNRestart from 'react-native-restart';
+
 
 const alarmbtn = require('./img/alambtn.png')
 const redKo = require('./img/redKo.png')
@@ -279,9 +281,9 @@ const MainSwitch = () => {
 
   const focusis = navigation.addListener('focus', () => {
     reqState()
-    // setInterval(() => {
-    //   reqState()
-    // }, 5000);
+    setInterval(() => {
+      reqState()
+    }, 10000);
   })
   useEffect(() => {
     return () => {
@@ -289,20 +291,23 @@ const MainSwitch = () => {
     }
   })
 
-  //
 
   function exitAlert() {
-    Alert.alert('서버와 연결이 끊겼습니다.', '앱을 재부팅해주세요.',
-      [
-        {
-          text: "OK", onPress: () =>
-            console.log('체크')
-          // RNExitApp.exitApp() 
-        }
-      ])
+    console.log('exit')
+    RNRestart.Restart()
+  } //나가는 알러트를 재부팅으로 완전 바꿔버림. 앱을 재부팅할 필요없이 앱에서 자동으로 재부팅 해줌.
+
+
+  var offAlertState = true
+
+  function mainoff() {
+    console.log('들어옴 : ' + offAlertState)
+    if (offAlertState === true) {
+      Alert.alert('메인 전원이 꺼져있습니다.', '전원을 켜주세요!')
+      offAlertState = false
+    }
   }
 
-  //
   useEffect(() => {
     client.on('data', (res) => {
       var command = '' + res
@@ -311,13 +316,60 @@ const MainSwitch = () => {
 
       //메인전원확인,전원켜져있음 데이터 받기
       if ('' + res == 'main_power_off') {
+
         setSwitchValue(false)
-        Alert.alert('메인 전원이 꺼져있습니다.', '전원을 켜주세요!')
+        mainoff() //꺼져있으니 메인스위치 켜달라 알러트창 표시
+
       } else if ('' + res == 'state_check') {
+
         reqState()//상태체크
-      } else if (JSON.parse(command)[0].power == 1) {
+
+      } else if (JSON.parse(command).length === 1) {
+
+        var parsejson = JSON.parse(command)
+
+        console.log('잘라진거 하나 받음')
+
+
+        if (parsejson[0].type === 'main') {
+
+          console.log('메인으로 들어옴')
+          if (parsejson[0].power === '1') {
+            setSwitchValue(true)
+            offAlertState = true
+          } else if (parsejson[0].power === '0') {
+            setSwitchValue(false)
+            mainoff() //꺼져있으니 메인스위치 켜달라 알러트창 표시
+          }
+
+          if (parsejson[0].state == 0 && mainAlarm == true) {
+            toggleAlert()
+            console.log('알람 켜짐 확인')
+          } else if (parsejson[0].state == 1 && mainAlarm == false) {
+            toggleAlert()
+            console.log('알람 켜짐 확인')
+          }
+
+        } else if (parsejson[0].type === 'salt') {
+          console.log('솔트로 들어옴')
+          setsalt(prev => [...prev.slice(0, Number(parsejson[0].name) - 1),
+          {
+            ...prev[Number(parsejson[0].name) - 1],
+            state: parsejson[0].power,
+            s1: parsejson[0].state.split(':')[0],
+            s2: parsejson[0].state.split(':')[1],
+            s3: parsejson[0].state.split(':')[2],
+            s4: parsejson[0].state.split(':')[3]
+          },
+          ...prev.slice(Number(parsejson[0].name), salt.length)
+          ])
+        }
+
+      }
+      else if (JSON.parse(command)[0].power == 1) {
         var parsecmd = JSON.parse(command);
         setSwitchValue(true)
+        offAlertState = true
 
         //알람확인
         if (parsecmd[0].state == 0 && mainAlarm == true) {
@@ -552,7 +604,7 @@ const MainSwitch = () => {
     var List = []
 
     for (var i = 0; i < 20; i++) {
-      List.push(<SoltPan index={i} id={salt[i].id} state={salt[i].state} s1={salt[i].s1} s2={salt[i].s2} s3={salt[i].s3} s4={salt[i].s4}></SoltPan>)
+      List.push(<SoltPan key={i} index={i} id={salt[i].id} state={salt[i].state} s1={salt[i].s1} s2={salt[i].s2} s3={salt[i].s3} s4={salt[i].s4}></SoltPan>)
     }
 
     return List
@@ -561,9 +613,7 @@ const MainSwitch = () => {
   //염판 jsx, 프롭으로 받아서 정보 표현하기// 자동으로 값들이 변경되어 보임
   const SoltPan = (prop) => {
     return (
-      <View style={styles.smallcontainer}>
-
-        {/* 염판 글자부분 */}
+      <View style={{}}>
         <TouchableWithoutFeedback onPress={() => {
           setsalt(prev => [...prev.slice(0, prop.index),
           {
@@ -580,44 +630,49 @@ const MainSwitch = () => {
           }
           setTimeout(() => {
             reqState()
-          }, 1000);
+          }, 800);
         }}>
-          <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5, flex: 1, }}>
-            <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
-              <Text style={{ color: 'white', fontSize: 20 }}>염판 {prop.id}</Text>
+          <View style={styles.smallcontainer}>
+
+            {/* 염판 글자부분 */}
+            <View style={{ justifyContent: "center", alignItems: "center", marginTop: 15, marginBottom: 15, marginLeft: 5, flex: 1, }}>
+              <View style={{ justifyContent: "center", alignItems: "center", margin: 5, marginLeft: 15, marginRight: 15 }}>
+                <Text style={{ color: 'white', fontSize: 20 }}>염판 {prop.id}</Text>
+              </View>
             </View>
+            {/* 염판 글자부분 끝 */}
+
+            <View style={{ flex: 0.3 }}></View>
+
+            {/* 수문 확인 부분 */}
+            <View style={{ flexDirection: 'row', flex: 2 }}>
+              {prop.s1 == '0' ?
+                <View onLayout={(data) => { setCirclewidth(data.nativeEvent.layout.width) }} style={styles.circleStateGreen}></View> :
+                <View onLayout={(data) => { setCirclewidth(data.nativeEvent.layout.width) }} style={styles.circleStateRed}></View>
+              }
+              <View style={{ flex: 1 }}></View>
+              {prop.s2 == '0' ?
+                <View style={styles.circleStateGreen}></View> :
+                <View style={styles.circleStateRed}></View>
+              }
+              <View style={{ flex: 1 }}></View>
+              {prop.s3 == '0' ?
+                <View style={styles.circleStateGreen}></View> :
+                <View style={styles.circleStateRed}></View>
+              }
+              <View style={{ flex: 1 }}></View>
+              {prop.s4 == '0' ?
+                <View style={styles.circleStateGreen}></View> :
+                <View style={styles.circleStateRed}></View>
+              }
+            </View>
+            {/* 수문 확인 부분 끝 // 서클 크기 결정 고민 */}
+
+            <View style={{ flex: 0.3 }}></View>
+
+
           </View>
         </TouchableWithoutFeedback>
-        {/* 염판 글자부분 끝 */}
-
-        <View style={{ flex: 0.3 }}></View>
-
-        {/* 수문 확인 부분 */}
-        <View style={{ flexDirection: 'row', flex: 2 }}>
-          {prop.s1 == '0' ?
-            <View onLayout={(data) => { setCirclewidth(data.nativeEvent.layout.width) }} style={styles.circleStateGreen}></View> :
-            <View onLayout={(data) => { setCirclewidth(data.nativeEvent.layout.width) }} style={styles.circleStateRed}></View>
-          }
-          <View style={{ flex: 1 }}></View>
-          {prop.s2 == '0' ?
-            <View style={styles.circleStateGreen}></View> :
-            <View style={styles.circleStateRed}></View>
-          }
-          <View style={{ flex: 1 }}></View>
-          {prop.s3 == '0' ?
-            <View style={styles.circleStateGreen}></View> :
-            <View style={styles.circleStateRed}></View>
-          }
-          <View style={{ flex: 1 }}></View>
-          {prop.s4 == '0' ?
-            <View style={styles.circleStateGreen}></View> :
-            <View style={styles.circleStateRed}></View>
-          }
-        </View>
-        {/* 수문 확인 부분 끝 // 서클 크기 결정 고민 */}
-
-        <View style={{ flex: 0.3 }}></View>
-
         {/* off상태 표현창 */}
         {prop.state == '0' && <View style={{ width: chwidth - 20, position: 'absolute', backgroundColor: 'rgba(13, 13, 13, 0.6)', borderRadius: 10 }}>
           <TouchableWithoutFeedback onPress={() => {
@@ -646,7 +701,6 @@ const MainSwitch = () => {
           </TouchableWithoutFeedback>
         </View>}
         {/* off상태 표현창 끝 */}
-
       </View>
     )
   }// saltpan 끝
@@ -664,7 +718,15 @@ const MainSwitch = () => {
               <TouchableWithoutFeedback onPress={() => { toggleAlert() }}>
                 <Text style={{ color: 'white', fontSize: 25, fontFamily: 'Arita-buriB' }}>염전</Text>
               </TouchableWithoutFeedback>
-              <Text style={{ color: 'white', fontSize: 25, fontFamily: 'Arita-buriB' }}>스마트 ON, OFF</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ color: 'white', fontSize: 25, fontFamily: 'Arita-buriB' }}>스마트 ON, OFF</Text>
+
+                {/* <TouchableWithoutFeedback onPress={() => { RNRestart.Restart() }}>
+                  <View style={{ width: 50, height: 30, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: 'skyblue', marginLeft: 10 }}>
+                    <Text style={{ fontSize: 15 }}>restart</Text>
+                  </View>
+                </TouchableWithoutFeedback> */}
+              </View>
             </View>
 
             {/* 스위치 */}
