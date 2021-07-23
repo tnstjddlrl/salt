@@ -272,7 +272,17 @@ const MainSwitch = () => {
   function reqState() {
     try {
       client.write('$C,O,0,0')
-      console.log('전송!')
+      console.log('reqState전송!')
+    } catch (error) {
+      console.log(error)
+      exitAlert()
+    }
+  }
+
+  function startApp() {
+    try {
+      client.write('$B,O,0,0')
+      console.log('startApp전송!')
     } catch (error) {
       console.log(error)
       exitAlert()
@@ -280,10 +290,11 @@ const MainSwitch = () => {
   }
 
   const focusis = navigation.addListener('focus', () => {
-    reqState()
+    startApp()
+
     setInterval(() => {
       reqState()
-    }, 10000);
+    }, 6000);
   })
   useEffect(() => {
     return () => {
@@ -324,6 +335,8 @@ const MainSwitch = () => {
 
         reqState()//상태체크
 
+      } else if (command == 'suc') {
+        console.log('suc 넘어옴!')
       } else if (JSON.parse(command).length === 1) {
 
         var parsejson = JSON.parse(command)
